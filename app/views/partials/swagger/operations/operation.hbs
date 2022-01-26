@@ -16,7 +16,7 @@
 }}
 <div id="operation-{{htmlId path}}-{{htmlId tags.[0]}}" class="operation panel"
   data-traverse-target="operation-{{htmlId path}}-{{htmlId tags.[0]}}">
-  {{# unless @first }}
+  {{!-- {{# unless @first }} --}}
     {{#if tags}}
       <!-- <section class="operation-tags row"> -->
         <!-- <div class="doc-copy"> -->
@@ -28,7 +28,7 @@
         <!-- </div> -->
       <!-- </section> -->
     {{/if}}
-  {{/unless}}
+  {{!-- {{/unless}} --}}
 
   <h2 class="operation-name {{#if (and isDeprecated (not @root.info.x-hideIsDeprecated)) }}swagger-operation-deprecated{{/if}}">
     {{md (codify summary) stripParagraph="true"}}
@@ -67,7 +67,7 @@
     {{! Print examples without whitespace }}
     <div class="doc-examples">{{#if _show_requst_body_section}}
       <section>
-        <h4>Example</h4>
+        {{!-- <h4>Example</h4> --}}
         {{#if consumes}}
           <h5>Request Content-Types:
             <span>{{#each consumes}}{{.}}{{#unless @last}}, {{/unless}}{{/each}}</span>

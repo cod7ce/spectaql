@@ -4,15 +4,14 @@
 
 .drawer-layout {
   .drawer {
-    box-shadow: 0 0 10px rgba($black, 0.5);
     transition: transform $default-transition-length ease;
     backface-visibility: hidden;
 
     &.slide-left {
-      transform: translateX(-250px);
+      transform: translateX(-$drawer-size);
     }
     &.slide-right {
-      transform: translateX(250px);
+      transform: translateX($drawer-size);
     }
     .drawer-overlay {
       position: absolute;
@@ -26,11 +25,11 @@
     @include breakpoint(large) {
       &.slide-left {
         transform: none;
-        margin-left: -250px;
+        margin-left: -$drawer-size;
       }
       &.slide-right {
         transform: none;
-        margin-left: 250px;
+        margin-left: $drawer-size;
       }
       .drawer-overlay {
         display: none;
@@ -41,7 +40,7 @@
   @include breakpoint(large) {
     &.drawer-slide-left-large {
       .drawer {
-        margin-left: -250px;
+        margin-left: -$drawer-size;
       }
       .floating-menu-icon {
         opacity: 0;
@@ -49,7 +48,7 @@
     }
     &.drawer-slide-right-large {
       .drawer {
-        margin-left: 250px;
+        margin-left: $drawer-size;
       }
       .floating-menu-icon {
         opacity: 0;
