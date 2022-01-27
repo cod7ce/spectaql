@@ -36,7 +36,7 @@
 
       {{#if servers}}
         <h5>API Endpoints</h5>
-          <pre><code>{{swaggerEndpoint}}</code></pre>
+          <pre><code>{{!-- {{swaggerEndpoint}} --}}{{#each servers}}{{md description stripParagraph=true}} {{url}}{{#unless @last}}<br/>{{/unless}}{{/each}}</code></pre>
       {{/if}}
 
       {{#if consumes}}

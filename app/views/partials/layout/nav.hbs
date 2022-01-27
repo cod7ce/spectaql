@@ -6,9 +6,9 @@
 <nav id="nav" role="navigation">
   {{! Check if there is effectively nothing to do }}
   {{#unless (or info.x-hideIntroduction (and info.x-hideWelcome (or info.x-hideIntroItems (empty info.x-introItems)))) }}
-    <h5>Introduction</h5>
+    <h5>{{i18n.introduction}}</h5>
     {{#unless info.x-hideWelcome }}
-      <a href="#introduction">Welcome</a>
+      <a href="#introduction">{{i18n.welcome}}</a>
     {{/unless}}
     {{#unless (or info.x-hideIntroItems (empty info.x-introItems)) }}
       {{#each info.x-introItems }}
@@ -41,11 +41,17 @@
   {{/if}}
 
   {{#if (nempty tags) }}
-    <h5>Operations</h5>
+    <h5>{{i18n.operations}}</h5>
     {{#each tags}}
       {{#if ../showTagSummary}}
         <section>
-          <a href="#tag-{{htmlId name}}">{{name}}</a>
+          <a href="#tag-{{htmlId name}}">
+            {{#ifeq name 'Queries'}}
+              {{@root.i18n.queries}}
+            {{else}}
+              {{@root.i18n.mutations}}
+            {{/ifeq}}
+          </a>
           <ul>
             {{#each operations}}
               <li>
@@ -54,8 +60,8 @@
                   query or mutation type name
                 }}
                 <a href="#operation-{{htmlId path}}-{{htmlId tags.[0] }}">
-                  {{#if summary}}
-                    {{summary}}
+                  {{#if description}}
+                    {{description}}
                   {{else}}
                     {{toUpperCase method}} {{path}}
                   {{/if}}
@@ -71,8 +77,8 @@
           query or mutation type name
         }}
         <a href="#operation-{{htmlId path}}-{{htmlId tags.[0] }}">
-          {{#if summary}}
-            {{summary}}
+          {{#if description}}
+            {{description}}
           {{else}}
             {{toUpperCase method}} {{path}}
           {{/if}}
@@ -83,12 +89,19 @@
   {{/if}}
 
   {{#if (nempty definitions)}}
-    <h5>Types</h5>
-    {{#each definitions}}
-      <a href="#definition-{{htmlId @key}}">
-        {{@key}}
-      </a>
-    {{/each}}
+    <h5>{{i18n.types}}</h5>
+    <section>
+      <a href="#tag-{{htmlId 'types'}}">{{i18n.objects_and_fields}}</a>
+      <ul>
+      {{#each definitions}}
+        <li>
+          <a href="#definition-{{htmlId @key}}">
+            {{@key}}
+          </a>
+        </li>
+      {{/each}}
+      </ul>
+    </section>
   {{/if}}
 
 </nav>

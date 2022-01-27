@@ -32,6 +32,7 @@ const defaults = {
   }).name,
   oneFile: false,
   specData: {},
+  locale: 'zh-CN'
 }
 
 // Things that may get set from either the CLI or the YAML.spectaql area, but if nothing
@@ -79,7 +80,7 @@ const introspectionOptionsMap = {
   headers: 'headers',
 }
 
-function resolvePaths (options, keys = ['targetDir', 'appDir', 'logoFile', 'additionalJsFile', 'faviconFile', 'specFile']) {
+function resolvePaths (options, keys = ['targetDir', 'appDir', 'additionalJsFile', 'specFile']) {
   keys.forEach((key) => {
     const val = options[key]
     // TODO: make this "!val.startsWith('/')"?
@@ -142,19 +143,19 @@ function resolveOptions(options) {
   // OK, layer in any defaults that may be set by the CLI and the YAML, but may not have been:
   opts = _.defaults({}, opts, spectaqlOptionDefaults)
 
-  if (opts.logoFile) {
-    if (opts.logoFile.indexOf('test/fixtures') === 0) {
-      opts.logoFile = path.resolve(root, opts.logoFile)
-    }
+  // if (opts.logoFile) {
+  //   if (opts.logoFile.indexOf('test/fixtures') === 0) {
+  //     opts.logoFile = path.resolve(root, opts.logoFile)
+  //   }
 
-    // Keep or don't keep the original logoFile name when copying to the target
-    opts.logoFileTargetName = opts.preserveLogoName ? path.basename(options.logoFile) : `logo${path.extname(opts.logoFile)}`
-  }
+  //   // Keep or don't keep the original logoFile name when copying to the target
+  //   opts.logoFileTargetName = opts.preserveLogoName ? path.basename(options.logoFile) : `logo${path.extname(opts.logoFile)}`
+  // }
 
-  if (opts.faviconFile) {
-    // Keep or don't keep the original faviconFile name when copying to the target
-    opts.faviconFileTargetName = opts.preserveFaviconName ? path.basename(opts.faviconFile) : `favicon${path.extname(opts.faviconFile)}`
-  }
+  // if (opts.faviconFile) {
+  //   // Keep or don't keep the original faviconFile name when copying to the target
+  //   opts.faviconFileTargetName = opts.preserveFaviconName ? path.basename(opts.faviconFile) : `favicon${path.extname(opts.faviconFile)}`
+  // }
 
   return opts
 }
@@ -326,12 +327,13 @@ module.exports = function (options) {
         copies.unshift('js')
       }
     }
-    if (opts.logoFile) {
-      copies.unshift('logo')
-    }
-    if (opts.faviconFile) {
-      copies.unshift('favicon')
-    }
+
+    // if (opts.logoFile) {
+    //   copies.unshift('logo')
+    // }
+    // if (opts.faviconFile) {
+    //   copies.unshift('favicon')
+    // }
 
     grunt.task.run('templates')
 

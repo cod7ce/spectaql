@@ -44,6 +44,8 @@ program.version(package.version)
   .option('--favicon-file <file>', 'specify a custom favicon file (default: null)', String)
   .option('--no-favicon-file', 'do not use a custom favicon file, overriding what may be in the config')
 
+  .option('--locale <name>', 'specify local for page content (default: zh-CN)', String)
+
   .option('--schema-file <file...>', 'specify a file, files or glob to files that contain a GraphQL Schema Definitions written in SDL to be used instead of an Introspection Query call (default: none)')
   .option('--introspection-url <url>', 'specify a URL for an Introspection Query(default: none)', String)
   .option('--introspection-file <file>', 'specify a file that contains an Introspection Query response (default: none)', String)
@@ -70,5 +72,6 @@ if (program.args.length < 1) { // && program.rawArgs.length < 1
 const options = program.opts()
 options.specFile = program.args[0]
 
+console.log(options)
 // Run the main app with parsed options
 spectaql(options).catch(console.warn)

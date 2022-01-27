@@ -1,4 +1,5 @@
 const url = require('url')
+const locales = require('./locale')
 
 const {
   loadSchemaFromSDLFile,
@@ -45,6 +46,9 @@ module.exports = function(opts) {
     domains = [],
     servers = [],
     info = {},
+    i18n = locales[opts.locale],
+    logo = opts.logoFile,
+    favicon = opts.faviconFile,
     externalDocs,
     securityDefinitions,
   } = spec
@@ -146,6 +150,9 @@ module.exports = function(opts) {
   const swaggerSpec = {
     openapi: '3.0.0',
     info,
+    i18n,
+    logo,
+    favicon,
     servers,
     host,
     schemes: [ protocol.slice(0, -1) ],

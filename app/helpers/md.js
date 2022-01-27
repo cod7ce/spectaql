@@ -12,7 +12,7 @@ var common = require('../lib/common')
 module.exports = function(value, options) {
   value = value + ''
   const markdownOpts = {}
-  if (options.hash) {
+  if (options && options.hash) {
     markdownOpts.stripParagraph = options.hash.stripParagraph || false
     markdownOpts.addClass = options.hash.addClass || false
   }

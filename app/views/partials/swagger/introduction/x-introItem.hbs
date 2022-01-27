@@ -1,10 +1,13 @@
 <div id="intro-item-{{@index}}" data-traverse-target="intro-item-{{@index}}">
   <div class="doc-row">
-    <h5 class="doc-intro-item">{{title}}</h5>
+    <h5 class="doc-intro-item"><b>{{title}}</b></h5>
     <div class="doc-copy">
         {{md (interpolateReferences description)}}
     </div>
     <div class="doc-examples">
+      {{#each images}}
+        <img src="{{url}}" />
+      {{/each}}
     </div>
   </div>
 </div>

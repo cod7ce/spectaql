@@ -3,13 +3,13 @@
   {{#each tags}}
     {{!-- <h1 id="tag-{{htmlId name}}" class="swagger-summary-tag tag-name" data-traverse-target="tag-{{htmlId name}}">{{name}}</h1> --}}
     <h1 id="tag-{{htmlId name}}" class="swagger-summary-tag tag-name" data-traverse-target="tag-{{htmlId name}}"></h1>
-    {{#if description}}
+    {{!-- {{#if description}}
       <div class="tag-description doc-row">
         <div class="doc-copy">
           {{md (interpolateReferences description)}}
         </div>
       </div>
-    {{/if}}
+    {{/if}} --}}
     {{! This really builds out the Queries and Mutations stuff  }}
     {{>swagger/operations/operations . method=method path=path}}
   {{/each}}

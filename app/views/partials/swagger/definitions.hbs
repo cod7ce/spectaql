@@ -9,8 +9,7 @@
 
 {{#if definitions}}
   {{!-- <span id="tag-types"></span><h1>Types</h1> --}}
-  <span id="tag-types"></span><h1></h1>
-
+  <h1 id="tag-types" class="swagger-summary-tag tag-name" data-traverse-target="tag-types"></h1>
   {{#each definitions}}
     {{>swagger/definition title=@key anchor="/definitions" }}
   {{/each}}

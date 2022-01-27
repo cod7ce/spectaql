@@ -22,7 +22,14 @@
         <!-- <div class="doc-copy"> -->
         <div class="operation-tags">
           {{#each tags}}
-            <a class="label" href="#tag-{{htmlId .}}">{{.}}</a><!--{{#unless @last}}, {{/unless}}-->
+            <a class="label" href="#tag-{{htmlId .}}">
+              {{#ifeq . 'Queries'}}
+                {{@root.i18n.queries}}
+              {{else}}
+                {{@root.i18n.mutations}}
+              {{/ifeq}}
+            </a>
+            <!--{{#unless @last}}, {{/unless}}-->
           {{/each}}
         </div>
         <!-- </div> -->
