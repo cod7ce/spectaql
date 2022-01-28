@@ -72,10 +72,10 @@ button:focus {
 
   h5 {
     margin: 1.5rem 0 0.65rem;
-    //text-transform: uppercase;
+    text-transform: uppercase;
     color: scale-color($medium-gray, $lightness: -10%);
     // color: $accent-color;
-    //font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 
   a {
@@ -137,7 +137,6 @@ button:focus {
   background: $white;
   overflow: hidden;
   position: relative;
-  padding: 0 100px;
 
   .example-box {
     display: none;
@@ -145,6 +144,7 @@ button:focus {
 
   @include breakpoint(large) {
     // padding: 0 100px 50px;
+    padding: 0 100px;
     .example-box {
       // width: 50%;
       display: block;
