@@ -32,6 +32,9 @@
 
 .swagger-operation-description {
   @include named-section($msg-swagger-section-operation-description);
+  &:lang(en) {
+    @include named-section($msg-swagger-section-operation-description-en);
+  }
 }
 
 .swagger-operation-deprecated {
@@ -40,6 +43,9 @@
 
 .swagger-request-params {
   @include named-section($msg-swagger-section-request-params);
+  &:lang(en) {
+    @include named-section($msg-swagger-section-request-params-en);
+  }
 }
 
 .swagger-request-body {
@@ -52,6 +58,9 @@
 
 .swagger-responses {
   @include named-section($msg-swagger-section-response);
+  &:lang(en) {
+    @include named-section($msg-swagger-section-response-en);
+  }
 }
 
 .swagger-global {

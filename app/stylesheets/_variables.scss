@@ -50,14 +50,18 @@ $msg-json-section-example: "Example" !default;
 
 $msg-swagger-data-type: 'Data type' !default;
 $msg-swagger-description: '描述' !default;
+$msg-swagger-description-en: 'Description' !default;
 $msg-swagger-deprecated: 'Deprecated' !default;
 
 $msg-swagger-section-operation-path: 'Path' !default;
 $msg-swagger-section-operation-description: $msg-swagger-description !default;
+$msg-swagger-section-operation-description-en: $msg-swagger-description-en !default;
 $msg-swagger-section-operation-deprecated: $msg-swagger-deprecated !default;
 $msg-swagger-section-request-params: '参数' !default;
+$msg-swagger-section-request-params-en: 'Arguments' !default;
 $msg-swagger-section-request-body: '' !default;
 $msg-swagger-section-response: '响应' !default;
+$msg-swagger-section-response-en: 'Response' !default;
 $msg-swagger-section-responses: 'Responses' !default;
 
 $msg-swagger-param-key: 'Key' !default;
