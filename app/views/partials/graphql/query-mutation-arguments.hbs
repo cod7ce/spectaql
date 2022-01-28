@@ -13,11 +13,13 @@
 {{#if responses}}
   <section class="swagger-responses">
     {{#each responses}}
-      Returns
+      {{@root.i18n.returns}}
       {{! If it's got items, then it's an array, and we don't care about the indefiniteArticle }}
-      {{#unless schema.items }}
-        {{ indefiniteArticle (getReturnTypeNameFromJsonSchemaReturnSchema schema)}}
-      {{/unless}}
+      {{#ifeq @root.i18n.locale 'en'}}
+        {{#unless schema.items }}
+          {{ indefiniteArticle (getReturnTypeNameFromJsonSchemaReturnSchema schema)}}
+        {{/unless}}
+      {{/ifeq}}
       {{~ md (mdTypeLink . codify=true) stripParagraph=true }}
 
       {{#if description}}
