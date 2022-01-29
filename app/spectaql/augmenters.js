@@ -451,6 +451,9 @@ function hideTypes ({
           acc[name] = definition
           if (!_.isEmpty(metadata)) {
             _.set(definition, METADATA_OUTPUT_PATH, metadata)
+            if (!_.isEmpty(metadata.description)) {
+              _.set(definition, 'description', metadata.description)
+            }
           }
         }
 
