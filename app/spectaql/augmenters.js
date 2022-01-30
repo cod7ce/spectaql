@@ -17,6 +17,7 @@ const {
 
 const isEnum = require('../helpers/isEnum')
 const isScalar = require('../helpers/isScalar')
+const isMutationPayload = require('../helpers/isMutationPayload')
 const stripTrailing = require('../helpers/stripTrailing')
 
 const METADATA_OUTPUT_PATH = 'metadata'
@@ -438,6 +439,30 @@ function hideTypes ({
     typeDocumentedDefault: documentedDefault,
   } = introspectionOptions
 
+  jsonSchema.payloads =
+    !typesDocumented ?
+    {} :
+    Object.entries(jsonSchema.definitions).reduce(
+      (acc, [name, definition]) => {
+        const type = getTypeFromIntrospectionResponse({name, introspectionResponse})
+        const metadata = _.get(type, metadatasPath, {})
+        const shouldDocument = !!definition && calculateShouldDocument({ ...metadata, def: documentedDefault })
+
+        if (shouldDocument && isMutationPayload(name)) {
+          acc[name] = definition
+          if (!_.isEmpty(metadata)) {
+            _.set(definition, METADATA_OUTPUT_PATH, metadata)
+            if (!_.isEmpty(metadata.description)) {
+              _.set(definition, 'description', metadata.description)
+            }
+          }
+        }
+
+        return acc
+      },
+      {}
+    )
+
   jsonSchema.definitions =
     !typesDocumented ?
     {} :
@@ -447,7 +472,7 @@ function hideTypes ({
         const metadata = _.get(type, metadatasPath, {})
         const shouldDocument = !!definition && calculateShouldDocument({ ...metadata, def: documentedDefault })
 
-        if (shouldDocument) {
+        if (shouldDocument && !isMutationPayload(name)) {
           acc[name] = definition
           if (!_.isEmpty(metadata)) {
             _.set(definition, METADATA_OUTPUT_PATH, metadata)

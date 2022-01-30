@@ -102,6 +102,21 @@
       {{/each}}
       </ul>
     </section>
+
+    {{#if (nempty payloads)}}
+      <section>
+        <a href="#tag-{{htmlId 'payloads'}}">{{i18n.payloads}}</a>
+        <ul>
+        {{#each payloads}}
+          <li>
+            <a href="#definition-{{htmlId @key}}">
+              {{@key}}
+            </a>
+          </li>
+        {{/each}}
+        </ul>
+      </section>
+    {{/if}}
   {{/if}}
 
 </nav>

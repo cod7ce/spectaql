@@ -11,7 +11,9 @@ module.exports = {
     'name': '名称',
     'description': '描述',
     'field_name': '字段名',
-    'returns': '返回'
+    'returns': '返回',
+    'example': '示例',
+    'payloads': 'Payload'
   },
   'en': {
     'locale': 'en',
@@ -25,6 +27,8 @@ module.exports = {
     'name': 'Name',
     'description': 'Description',
     'field_name': 'Field Name',
-    'returns': 'Returns'
+    'returns': 'Returns',
+    'example': 'Example',
+    'payloads': 'Payload'
   }
 }

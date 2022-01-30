@@ -140,6 +140,7 @@ module.exports = function(opts) {
 
   const paths = composePaths({ domains, graphQLSchema, jsonSchema })
   const definitions = jsonSchema.definitions
+  const payloads = jsonSchema.payloads
 
   if (removeTrailingPeriodFromDescriptions) {
     removeTrailingPeriodsFromDescriptions(paths)
@@ -166,6 +167,7 @@ module.exports = function(opts) {
     paths,
     securityDefinitions,
     definitions,
+    payloads,
     jsonSchema,
   }
 

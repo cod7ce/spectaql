@@ -369,7 +369,7 @@ article {
   .doc-row {
     @extend .row;
     @extend .collapse;
-    margin: 0.5rem 0 20px;
+    margin: 0;
   }
 
   .doc-copy {
@@ -427,13 +427,13 @@ article {
       }
     }
 
-    @include breakpoint(medium down) {
-      &:not(:empty) {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        padding-bottom: 0.5rem;
-      }
-    }
+    // @include breakpoint(medium down) {
+    //   &:not(:empty) {
+    //     margin-top: 1.5rem;
+    //     padding-top: 1.5rem;
+    //     padding-bottom: 0.5rem;
+    //   }
+    // }
 
     code {
       display: block;
@@ -528,6 +528,7 @@ article {
 
     .operation-name {
       margin-top: 70px;
+      border-top: 2px solid rgb(216, 216, 216);
     }
 
     @include breakpoint(large) {

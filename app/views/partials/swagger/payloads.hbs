@@ -1,0 +1,16 @@
+{{!--
+  Original work Copyright (c) 2015 Nils Knappmeier
+  https://github.com/bootprint/bootprint-openapi
+
+  Renders the definition-section of the HTML-page.
+  @param {Definition[]} definitions a list of JSON-subschemas.
+  @api public
+--}}
+
+{{#if payloads}}
+  {{!-- <span id="tag-types"></span><h1>Types</h1> --}}
+  <h1 id="tag-payloads" class="swagger-summary-tag tag-name" data-traverse-target="tag-payloads"></h1>
+  {{#each payloads}}
+    {{>swagger/payload title=@key anchor="/payloads" }}
+  {{/each}}
+{{/if}}
